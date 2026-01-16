@@ -18,14 +18,15 @@ import { pricingCardAnimation } from "@/src/animations/pricingCardAnimations";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetClose } from "../components/ui/sheet";
 import { Menu } from "lucide-react";
-
+import { fadeInUp, fadeInRight } from "@/src/animations/animations";
+import { motion } from "framer-motion";
 
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Features', href: '/features' },
-  { name: 'Pricing', href: '/pricing' },
+  { name: 'About', href: '/#about' },
+  { name: 'Features', href: '/#features' },
+  { name: 'Pricing', href: '/#pricing' },
 ];
 
 const features = [
@@ -113,7 +114,9 @@ export default function Home() {
   const totalHoursRef = useRef<HTMLSpanElement>(null);
   const teamMembersRef = useRef<HTMLSpanElement>(null);
   const billableHoursRef = useRef<HTMLSpanElement>(null);
-
+const MotionImage = motion(Image);
+  const [showParagraph, setShowParagraph] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   useLayoutEffect(() => {
     if (!logoRef.current || !textRef.current || !menuRef.current || !buttonRef.current || !heroHeadingRef.current) return;
@@ -128,6 +131,8 @@ export default function Home() {
     // Run hero animation after navbar completes
     navTl.eventCallback("onComplete", () => {
       heroTextAnimation(heroHeadingRef.current!);
+      setShowParagraph(true);
+      setShowImage(true);
     });
 
     return () => {
@@ -174,7 +179,7 @@ export default function Home() {
 
   return (
     <div className="bg-gradient-to-r from-[#111827] to-[#1F2937] overflow-x-hidden">
-      <NavigationMenu className="flex items-center justify-between mx-auto mb-5 sm:mb-20 px-6 sm:px-20 py-6 sm:py-10">
+      <NavigationMenu className="flex items-center justify-between mx-auto mb-5 lg:mb-20 px-6 lg:px-20 py-6 lg:py-10">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-6">
@@ -271,19 +276,24 @@ export default function Home() {
               >
                 Track time. Improve performance.
               </h1>
-              <p className="w-full sm:w-[85%] text-2xl text-white/90 max-w-full leading-relaxed mb-0 pr-6 sm:pr-0">
+              <motion.p  variants={fadeInUp}
+        initial="hidden"
+        animate={showParagraph ? "visible" : "hidden"} className="w-full sm:w-[85%] text-2xl text-white/90 max-w-full leading-relaxed mb-0 pr-6 sm:pr-0">
                 Monitor employee work hours, break time, and productivity in real time to ensure every minute counts and working time stays optimized.
-              </p>
+              </motion.p>
             </div>
           </div>
 
           <div className="flex w-full lg:w-[50vw] justify-end">
-            <Image
+            <MotionImage
               src="/right.png"
               alt="dashboard"
+              variants={fadeInRight}
+              initial="hidden"
+              animate={showImage ? "visible" : "hidden"}
               width={1920}
               height={1080}
-              className="w-full h-[100%] items-right rounded-tl-xl rounded-bl-xl w-32 h-32 bg-white shadow-[0_0_10px_0_rgba(168,85,247,0.62)]"
+              className="w-full h-[100%] items-right rounded-tl-xl rounded-bl-xl w-32 h-32 shadow-[0_0_10px_0_rgba(168,85,247,0.62)]"
             />
           </div>
         </div>
@@ -292,7 +302,9 @@ export default function Home() {
       {/* Features Section */}
       <div className="flex flex-col lg:flex-row px-6 lg:px-20 py-20 gap-20">
         {/* Left Side - Text Content */}
-        <div className="w-full lg:w-[50%] flex flex-col justify-center">
+        <motion.div  variants={fadeInUp}
+        initial="hidden"
+        animate={showParagraph ? "visible" : "hidden"} className="w-full lg:w-[50%] flex flex-col">
           <h2 className="text-54xl font-semibold text-white mb-6 leading-tight">
             Everything You Need For Your Time
           </h2>
@@ -317,7 +329,7 @@ export default function Home() {
               />
             </svg>
           </Button>
-        </div>
+        </motion.div>
 
         {/* Right Side - Feature Cards Grid */}
         <div className="w-full lg:w-[50%] grid grid-cols-1 sm:grid-cols-2 gap-8 ">

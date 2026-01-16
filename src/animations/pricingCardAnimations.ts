@@ -16,7 +16,7 @@ export const pricingCardAnimation = () => {
   // Check if screen is sm or larger (640px is Tailwind's sm breakpoint)
   if (typeof window === 'undefined') return;
   
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 1023;
   
   if (isMobile) {
     return; // Don't run animation on mobile
