@@ -300,7 +300,7 @@ const MotionImage = motion(Image);
       </div>
 
       {/* Features Section */}
-      <div className="flex flex-col lg:flex-row px-6 lg:px-20 py-20 gap-20">
+      <div id="about" className="flex flex-col lg:flex-row px-6 lg:px-20 py-20 gap-20">
         {/* Left Side - Text Content */}
         <motion.div  variants={fadeInUp}
         initial="hidden"
@@ -361,7 +361,7 @@ const MotionImage = motion(Image);
       </div>
 
       {/* Dashboard Metrics Section */}
-      <div className="px-6 py-6 sm:px-20 sm:py-20">
+      <div id="features" className="px-6 py-6 sm:px-20 sm:py-20">
         <h2 className="text-6xl font-semibold text-white text-center mb-12">
           Features
         </h2>
@@ -402,7 +402,7 @@ const MotionImage = motion(Image);
       </div>
 
       {/* Pricing Section */}
-      <div className="pricing-section px-6 sm:px-20 py-6 sm:py-20 overflow-hidden" style={{ perspective: '1000px' }}>
+      <div id="pricing" className="pricing-section px-6 sm:px-20 py-6 sm:py-20 overflow-hidden" style={{ perspective: '1000px' }}>
         <h2 className="text-6xl font-semibold text-white text-center mb-10">
           Choose Your Plan
         </h2>
