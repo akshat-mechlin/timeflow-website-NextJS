@@ -1,6 +1,7 @@
 services:
   app:
     container_name: timeflow-website
+    image: akshatpareek/timeflow-website:latest
     build:
       context: ..
       dockerfile: docker/Dockerfile
