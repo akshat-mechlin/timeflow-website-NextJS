@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify Name
-        if: "!startsWith(github.head_ref, 'feat/') && !startsWith(github.head_ref, 'fix/') && !startsWith(github.head_ref, 'chore/') && !startsWith(github.head_ref, 'docs/')"
+        if: "!startsWith(github.head_ref, 'feat/') && !startsWith(github.head_ref, 'fix/') && !startsWith(github.head_ref, 'chore/') && !startsWith(github.head_ref, 'docs/') && !startsWith(github.head_ref, 'feature/')"
         run: |
           echo "Branch name '${{ github.head_ref }}' is invalid."
-          echo "Must start with feat/, fix/, chore/, or docs/"
+          echo "Must start with feat/, fix/, chore/, feature/, or docs/"
           exit 1
