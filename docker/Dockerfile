@@ -21,7 +21,7 @@ RUN npm run build
 
 # --- Production Stage ---
 # Clean, minimal image for deployment
-FROM node:20-alpine AS production
+FROM node:22-alpine AS production
 WORKDIR /app
 
 ENV NODE_ENV=production
