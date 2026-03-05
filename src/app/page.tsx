@@ -101,6 +101,9 @@ const pricingPlans = [
   },
 ];
 
+const MotionImage = motion(Image);
+
+
 export default function Home() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -114,7 +117,7 @@ export default function Home() {
   const totalHoursRef = useRef<HTMLSpanElement>(null);
   const teamMembersRef = useRef<HTMLSpanElement>(null);
   const billableHoursRef = useRef<HTMLSpanElement>(null);
-const MotionImage = motion(Image);
+
   const [showParagraph, setShowParagraph] = useState(false);
   const [showImage, setShowImage] = useState(false);
 
@@ -142,11 +145,11 @@ const MotionImage = motion(Image);
 
   useEffect(() => {
     if (!cardsRef.current || cardsRef.current.length === 0) return;
-  
+
     const cards = cardsRef.current.filter(Boolean) as HTMLElement[];
-  
+
     featureCardsAnimation(cards);
-  
+
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -194,7 +197,7 @@ const MotionImage = motion(Image);
 
         {/* Desktop Navigation */}
         <NavigationMenuList ref={menuRef} className="hidden md:flex gap-4">
-          {navLinks.map((link, i) => {
+          {navLinks.map((link) => {
             const isActive = pathname === link.href;
 
             return (
@@ -234,7 +237,7 @@ const MotionImage = motion(Image);
             <SheetHeader>
               <SheetTitle className="text-white text-2xl font-bold">Menu</SheetTitle>
             </SheetHeader>
-            
+
             <nav className="flex flex-col gap-4 mt-8">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -243,11 +246,10 @@ const MotionImage = motion(Image);
                   <SheetClose key={link.name} asChild>
                     <Link
                       href={link.href}
-                      className={`px-4 py-3 text-lg font-medium transition-colors rounded-lg ${
-                        isActive
-                          ? "text-white bg-purple-500/20 border-l-4 border-purple-500"
-                          : "text-white/80 hover:text-white hover:bg-white/10"
-                      }`}
+                      className={`px-4 py-3 text-lg font-medium transition-colors rounded-lg ${isActive
+                        ? "text-white bg-purple-500/20 border-l-4 border-purple-500"
+                        : "text-white/80 hover:text-white hover:bg-white/10"
+                        }`}
                     >
                       {link.name}
                     </Link>
@@ -264,7 +266,7 @@ const MotionImage = motion(Image);
           </SheetContent>
         </Sheet>
       </NavigationMenu>
-      
+
 
       <div className="flex">
         <div className="flex w-full lg:flex-row flex-col items-center justify-between pl-6 lg:pl-20 pb-10 gap-10 lg:gap-20">
@@ -276,9 +278,9 @@ const MotionImage = motion(Image);
               >
                 Track time. Improve performance.
               </h1>
-              <motion.p  variants={fadeInUp}
-        initial="hidden"
-        animate={showParagraph ? "visible" : "hidden"} className="w-full sm:w-[85%] text-2xl text-white/90 max-w-full leading-relaxed mb-0 pr-6 sm:pr-0">
+              <motion.p variants={fadeInUp}
+                initial="hidden"
+                animate={showParagraph ? "visible" : "hidden"} className="w-full sm:w-[85%] text-2xl text-white/90 max-w-full leading-relaxed mb-0 pr-6 sm:pr-0">
                 Monitor employee work hours, break time, and productivity in real time to ensure every minute counts and working time stays optimized.
               </motion.p>
             </div>
@@ -302,14 +304,14 @@ const MotionImage = motion(Image);
       {/* Features Section */}
       <div id="about" className="flex flex-col lg:flex-row px-6 lg:px-20 py-20 gap-20">
         {/* Left Side - Text Content */}
-        <motion.div  variants={fadeInUp}
-        initial="hidden"
-        animate={showParagraph ? "visible" : "hidden"} className="w-full lg:w-[50%] flex flex-col">
+        <motion.div variants={fadeInUp}
+          initial="hidden"
+          animate={showParagraph ? "visible" : "hidden"} className="w-full lg:w-[50%] flex flex-col">
           <h2 className="text-54xl font-semibold text-white mb-6 leading-tight">
             Everything You Need For Your Time
           </h2>
           <p className="text-2xl text-white/90 mb-8 leading-relaxed">
-            Explore how leaders across different roles use TimeFlow's workforce analytics to achieve their goals.
+            Explore how leaders across different roles use TimeFlow&apos;s workforce analytics to achieve their goals.
           </p>
           <Button className="w-fit px-6 py-4">
             Talk to sales
@@ -365,7 +367,7 @@ const MotionImage = motion(Image);
         <h2 className="text-6xl font-semibold text-white text-center mb-12">
           Features
         </h2>
-        
+
         {/* Metrics Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
           {/* Total Hours */}
@@ -417,7 +419,7 @@ const MotionImage = motion(Image);
             >
               <div className="relative z-10 flex flex-col h-full">
                 <h3 className="text-2xl font-bold text-white mb-4">{plan.title}</h3>
-                
+
                 <div className="mb-6">
                   <span className="text-5xl font-bold text-white">{plan.price}</span>
                   <span className="text-xl text-white/80 ml-1">{plan.period}</span>

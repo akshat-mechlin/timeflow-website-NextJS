@@ -1,0 +1,16 @@
+name: Branch Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify Name
+        if: "!startsWith(github.head_ref, 'feat/') && !startsWith(github.head_ref, 'fix/') && !startsWith(github.head_ref, 'chore/') && !startsWith(github.head_ref, 'docs/')"
+        run: |
+          echo "Branch name '${{ github.head_ref }}' is invalid."
+          echo "Must start with feat/, fix/, chore/, or docs/"
+          exit 1
