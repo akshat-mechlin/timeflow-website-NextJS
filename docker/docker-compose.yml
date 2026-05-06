@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: timeflow-website
+    image: akshatpareek/timeflow-website:latest
+    build:
+      context: ..
+      dockerfile: docker/dockerfile
+      target: production
+    ports:
+      - "3020:3000"
+    restart: always
+    environment:
+      - NODE_ENV=production
