@@ -1,13 +1,12 @@
+version: '3.8'
+
 services:
-  app:
-    container_name: timeflow-website
-    image: akshatpareek/timeflow-website:latest
+  web:
+    image: akshatpareek/clientsphere-website:latest
     build:
       context: ..
       dockerfile: docker/Dockerfile
-      target: production
     ports:
-      - "3020:3000"
+      - "8085:80"
     restart: always
-    environment:
-      - NODE_ENV=production
+    container_name: clientsphere-website
