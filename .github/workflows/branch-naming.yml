@@ -1,0 +1,16 @@
+name: Branch Naming Convention
+on: [pull_request]
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Branch Name
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          REGEX="^(feature|bugfix|hotfix|chore|docs|refactor)\/[a-z0-9._-]+$"
+          if [[ ! $BRANCH_NAME =~ $REGEX ]]; then
+            echo "Error: Branch name '$BRANCH_NAME' does not match the naming convention."
+            echo "Convention: (feature|bugfix|hotfix|chore|docs|refactor)/description"
+            exit 1
+          fi
