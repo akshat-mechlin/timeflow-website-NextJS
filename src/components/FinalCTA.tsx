@@ -16,7 +16,7 @@ export default function FinalCTA() {
         <div className="mb-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <button
             type="button"
-            className="flex transform items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-medium text-flow-blue shadow-lg transition-all hover:scale-[1.02] hover:bg-slate-50"
+            className="flex transform items-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-medium text-final-cta-blue shadow-lg transition-all hover:scale-[1.02] hover:bg-slate-50"
           >
             <Calendar className="h-5 w-5" strokeWidth={2} />
             Book a demo
